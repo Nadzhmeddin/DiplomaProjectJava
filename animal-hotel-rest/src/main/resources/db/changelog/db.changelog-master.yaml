@@ -1,0 +1,446 @@
+databaseChangeLog:
+- changeSet:
+    id: 1724598675439-1
+    author: Nadzhmeddin (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            autoIncrement: true
+            constraints:
+              nullable: false
+              primaryKey: true
+              primaryKeyName: animal_type_pkey
+            name: id
+            type: BIGINT
+        - column:
+            name: animal_class
+            type: VARCHAR(255)
+        - column:
+            name: breed
+            type: VARCHAR(255)
+        tableName: animal_type
+- changeSet:
+    id: 1724598675439-2
+    author: Nadzhmeddin (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            name: price_per_night
+            type: INTEGER
+        - column:
+            autoIncrement: true
+            constraints:
+              nullable: false
+              primaryKey: true
+              primaryKeyName: room_type_pkey
+            name: id
+            type: BIGINT
+        - column:
+            name: animal_class
+            type: VARCHAR(255)
+        - column:
+            name: room_class
+            type: VARCHAR(255)
+        tableName: room_type
+- changeSet:
+    id: 1724598675439-3
+    author: Nadzhmeddin (generated)
+    changes:
+    - createSequence:
+        cacheSize: 1
+        cycle: false
+        dataType: bigint
+        incrementBy: 50
+        maxValue: 9223372036854775807
+        minValue: 1
+        sequenceName: hotel_seq
+        startValue: 1
+- changeSet:
+    id: 1724598675439-4
+    author: Nadzhmeddin (generated)
+    changes:
+    - createSequence:
+        cacheSize: 1
+        cycle: false
+        dataType: bigint
+        incrementBy: 50
+        maxValue: 9223372036854775807
+        minValue: 1
+        sequenceName: room_seq
+        startValue: 1
+- changeSet:
+    id: 1724598675439-5
+    author: Nadzhmeddin (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            name: age
+            type: INTEGER
+        - column:
+            name: animal_type_id
+            type: BIGINT
+        - column:
+            autoIncrement: true
+            constraints:
+              nullable: false
+              primaryKey: true
+              primaryKeyName: animals_pkey
+            name: id
+            type: BIGINT
+        - column:
+            name: owner_id
+            type: BIGINT
+        - column:
+            name: name
+            type: VARCHAR(255)
+        tableName: animals
+- changeSet:
+    id: 1724598675439-6
+    author: Nadzhmeddin (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            name: check_in_date
+            type: date
+        - column:
+            name: check_out_date
+            type: date
+        - column:
+            name: total_price
+            type: FLOAT8
+        - column:
+            name: animal_id
+            type: BIGINT
+        - column:
+            autoIncrement: true
+            constraints:
+              nullable: false
+              primaryKey: true
+              primaryKeyName: booking_pkey
+            name: id
+            type: BIGINT
+        - column:
+            name: room_id
+            type: BIGINT
+        tableName: booking
+- changeSet:
+    id: 1724598675439-7
+    author: Nadzhmeddin (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            name: stars
+            type: INTEGER
+        - column:
+            autoIncrement: true
+            constraints:
+              nullable: false
+              primaryKey: true
+              primaryKeyName: hotel_pkey
+            name: id
+            type: BIGINT
+        - column:
+            name: address
+            type: VARCHAR(255)
+        - column:
+            name: name
+            type: VARCHAR(255)
+        tableName: hotel
+- changeSet:
+    id: 1724598675439-8
+    author: Nadzhmeddin (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            autoIncrement: true
+            constraints:
+              nullable: false
+              primaryKey: true
+              primaryKeyName: owner_pkey
+            name: id
+            type: BIGINT
+        - column:
+            name: email
+            type: VARCHAR(255)
+        - column:
+            name: name
+            type: VARCHAR(255)
+        - column:
+            name: phone
+            type: VARCHAR(255)
+        tableName: owner
+- changeSet:
+    id: 1724598675439-9
+    author: Nadzhmeddin (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            name: hotel_id
+            type: BIGINT
+        - column:
+            autoIncrement: true
+            constraints:
+              nullable: false
+              primaryKey: true
+              primaryKeyName: room_pkey
+            name: id
+            type: BIGINT
+        - column:
+            name: type_id
+            type: BIGINT
+        tableName: room
+- changeSet:
+    id: 1724598675439-10
+    author: Nadzhmeddin (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: animal_type_id
+        baseTableName: animals
+        constraintName: fk1svnpn4d49o3n9byptey4oljv
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: NO ACTION
+        onUpdate: NO ACTION
+        referencedColumnNames: id
+        referencedTableName: animal_type
+        validate: true
+- changeSet:
+    id: 1724598675439-11
+    author: Nadzhmeddin (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: animal_id
+        baseTableName: booking
+        constraintName: fk6fidbrnvw8sxodm7co49kf9p2
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: NO ACTION
+        onUpdate: NO ACTION
+        referencedColumnNames: id
+        referencedTableName: animals
+        validate: true
+- changeSet:
+    id: 1724598675439-12
+    author: Nadzhmeddin (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: owner_id
+        baseTableName: animals
+        constraintName: fk6xajr4axhka7dp14997qveuos
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: NO ACTION
+        onUpdate: NO ACTION
+        referencedColumnNames: id
+        referencedTableName: owner
+        validate: true
+- changeSet:
+    id: 1724598675439-13
+    author: Nadzhmeddin (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: hotel_id
+        baseTableName: room
+        constraintName: fkdosq3ww4h9m2osim6o0lugng8
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: NO ACTION
+        onUpdate: NO ACTION
+        referencedColumnNames: id
+        referencedTableName: hotel
+        validate: true
+- changeSet:
+    id: 1724598675439-14
+    author: Nadzhmeddin (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: type_id
+        baseTableName: room
+        constraintName: fkf5vbgyps3ubaknn710nk2m5o5
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: NO ACTION
+        onUpdate: NO ACTION
+        referencedColumnNames: id
+        referencedTableName: room_type
+        validate: true
+- changeSet:
+    id: 1724598675439-15
+    author: Nadzhmeddin (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: room_id
+        baseTableName: booking
+        constraintName: fkq83pan5xy2a6rn0qsl9bckqai
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: NO ACTION
+        onUpdate: NO ACTION
+        referencedColumnNames: id
+        referencedTableName: room
+        validate: true
+- changeSet:
+     id: 1724598675439-16
+     author: Nadzhmeddin
+     comment: "Insert data"
+     changes:
+       - insert:
+           tableName: room_type
+           columns:
+           - column:
+               name: room_class
+               value: "LUXURY"
+           - column:
+               name: animal_class
+               value: "DOG"
+           - column:
+               name: price_per_night
+               value: "1000"
+       - insert:
+           tableName: room_type
+           columns:
+           - column:
+               name: room_class
+               value: "SUPERIOR"
+           - column:
+               name: animal_class
+               value: "CAT"
+           - column:
+               name: price_per_night
+               value: "1500"
+       - insert:
+           tableName: room_type
+           columns:
+           - column:
+               name: room_class
+               value: "STANDARD"
+           - column:
+               name: animal_class
+               value: "HAMSTER"
+           - column:
+               name: price_per_night
+               value: "500"
+       - insert:
+           tableName: hotel
+           columns:
+           - column:
+               name: name
+               value: "AnimalMarriott"
+           - column:
+               name: address
+               value: "Belgorod, 5 august str."
+           - column:
+               name: stars
+               value: "5"
+       - insert:
+           tableName: hotel
+           columns:
+           - column:
+               name: name
+               value: "AnimalRadisson"
+           - column:
+               name: address
+               value: "Belgorod, Pobedy str."
+           - column:
+               name: stars
+               value: "4"
+       - insert:
+           tableName: animal_type
+           columns:
+           - column:
+               name: animal_class
+               value: "DOG"
+           - column:
+               name: breed
+               value: "German Shepherd"
+       - insert:
+           tableName: animal_type
+           columns:
+           - column:
+               name: animal_class
+               value: "CAT"
+           - column:
+               name: breed
+               value: "Bengal"
+       - insert:
+           tableName: animal_type
+           columns:
+           - column:
+               name: animal_class
+               value: "HAMSTER"
+           - column:
+               name: breed
+               value: "Djungarian"
+       - insert:
+           tableName: owner
+           columns:
+           - column:
+               name: name
+               value: "Kate"
+           - column:
+               name: phone
+               value: "79202020676"
+           - column:
+               name: email
+               value: "kate@gmail.com"
+       - insert:
+           tableName: owner
+           columns:
+           - column:
+               name: name
+               value: "Mike"
+           - column:
+               name: phone
+               value: "79040913580"
+           - column:
+               name: email
+               value: "mike@gmail.com"
+       - insert:
+           tableName: room
+           columns:
+           - column:
+               name: hotel_id
+               value: "1"
+           - column:
+               name: type_id
+               value: "1"
+       - insert:
+           tableName: animals
+           columns:
+           - column:
+               name: name
+               value: "Sera"
+           - column:
+               name: age
+               value: "3"
+           - column:
+               name: animal_type_id
+               value: "1"
+           - column:
+               name: owner_id
+               value: "1"
+       - insert:
+           tableName: booking
+           columns:
+           - column:
+               name: check_in_date
+               value: "2024-09-01"
+           - column:
+               name: check_out_date
+               value: "2024-09-05"
+           - column:
+               name: total_price
+               value: "4000"
+           - column:
+                 name: animal_id
+                 value: "1"
+           - column:
+                 name: room_id
+                 value: "1"
